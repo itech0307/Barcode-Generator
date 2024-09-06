@@ -3,20 +3,23 @@
 Module LoadSetting
 
     Public settingsFile As String = "Settings.ini"
-    Public sourcePath As String
+
     Public inputPath As String
     Public inputFile As String
     Public outputPath As String
-    Public ProjectPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)   'My Documents
+    Public outputFile As String
+    Public ProjectPath = AppDomain.CurrentDomain.BaseDirectory
+    'Public DesktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop)
 
     Sub LoadSettings()
 
-        sourcePath = ProjectPath & GetSettingItem(settingsFile, "sourcePath")   '\Barcode Generator
-        inputPath = sourcePath & GetSettingItem(settingsFile, "inputPath")      '\Barcode Generator\Data
-        inputFile = Path.Combine(inputPath, "data.xlsx")                        '\Data\data.xlsx
-        outputPath = sourcePath & GetSettingItem(settingsFile, "outputPath")    '\Barcode Generator\Barcode
+        'sourcePath = ProjectPath & GetSettingItem(settingsFile, "sourcePath")                           '\Barcode Generator
+        inputPath = ProjectPath & GetSettingItem(settingsFile, "inputPath")                              'Debug\Data
+        inputFile = Path.Combine(inputPath, "data.txt")                                                 '\Data\data.txt
+        outputPath = ProjectPath & GetSettingItem(settingsFile, "outputPath")                            '\Result
+        outputFile = Path.Combine(outputPath, "Barcode.pdf")                                             '\Result\Barcode.pdf
 
-        Call Create_Path(sourcePath)
+        'Call Create_Path(sourcePath)
         Call Create_Path(inputPath)
         Call Create_Path(outputPath)
 

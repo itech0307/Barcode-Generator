@@ -1,135 +1,163 @@
-﻿Imports System.Collections.Concurrent
-Imports System.Drawing.Imaging
+﻿Imports System.Drawing.Imaging
 Imports System.IO
 Imports iTextSharp.text
 Imports iTextSharp.text.pdf
-Imports OfficeOpenXml
 Imports ZXing
+Imports ZXing.Common
 
 Class Form1
 
-    Dim filePath As String = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Barcode Generator", "Data", "data.xlsx")
-    Dim outputFolder As String = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Barcode Generator", "Barcode")
-    Dim pdfFilePath As String = Path.Combine(outputFolder, "Barcodes.pdf")
-
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        ExcelPackage.LicenseContext = LicenseContext.NonCommercial
         Call LoadSettings()
 
     End Sub
 
-    Private Async Sub btnGenerate_Click(sender As Object, e As EventArgs) Handles btnGenerate.Click
+    Private Sub btnGenerate_Click(sender As Object, e As EventArgs) Handles btnGenerate.Click
 
-        If Not File.Exists(filePath) Then
-            MessageBox.Show("Tệp data không tồn tại", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Return
+        'check data.txt file exist
+        If Not File.Exists(inputFile) Then
+            MessageBox.Show("File data.txt không tồn tại!")
+            Exit Sub
         End If
 
-        Dim employeeCodes As New List(Of String)()
-
-        Using package As New ExcelPackage(New FileInfo(filePath))
-            Dim worksheet As ExcelWorksheet = package.Workbook.Worksheets("Sheet1")
-
-            ' Check whether the Excel file has data or not
-            If worksheet.Dimension Is Nothing OrElse worksheet.Dimension.End.Row = 0 Then
-                MessageBox.Show("Tệp Excel chưa có dữ liệu, vui lòng nhập dữ liệu vào trước.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                Return
-            End If
-
-            'Take the first line and add it to employeeCodes
-            For i As Integer = 1 To worksheet.Dimension.End.Row
-                If Not String.IsNullOrEmpty(worksheet.Cells(i, 1).Text) Then
-                    employeeCodes.Add(worksheet.Cells(i, 1).Text.Trim())
+        Dim employeeID_list As New List(Of String)()
+        Try
+            'CREATE THE EMPLOYEE_ID LIST
+            For Each employeeID In File.ReadAllLines(inputFile)
+                If employeeID <> "" Then
+                    employeeID_list.Add(employeeID.Trim().ToUpper) ' Add ID into list
                 End If
             Next
-        End Using
+        Catch ex As Exception
+            MessageBox.Show("Error: Không thể đọc file " & ex.Message)
 
-        'Override Confirm?
-        If File.Exists(pdfFilePath) Then
-            Dim result As DialogResult = MessageBox.Show("Barcode cũ trong file pdf sẽ bị mất và thay bằng barcode mới, Bạn có muốn tiếp tục?", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning)
-            If result = DialogResult.Cancel Then
-                Return
-            End If
+        End Try
+
+        'CHECK DATA FILE EMPTY
+        If employeeID_list.Count = 0 Then
+            MessageBox.Show("data.txt chưa có dữ liệu! Hãy thêm dữ liệu đầu vào trước! ")
+            Process.Start(inputPath)
+            Exit Sub
         End If
 
+        '------------------------------------------------------
+
         Try
-            ' Create parallel barcodes - Multi Thread
-            Dim barcodeImages As New ConcurrentBag(Of Tuple(Of String, Bitmap))() ' Save barcode img from multi thread
-            Parallel.ForEach(employeeCodes, Sub(code)
+            'CREATE BARCODES LIST FROM EMPLOYEE ID LIST
+            Dim barcodesList As New List(Of Tuple(Of String, Bitmap))() ' Save barcode img
 
-                                                ' Create BarcodeWriter to create the barcode CODE_128
-                                                Dim writer As New BarcodeWriter With {
-                                                    .Format = BarcodeFormat.CODE_128,
-                                                    .Options = New ZXing.Common.EncodingOptions With {
-                                                        .Width = 300,
-                                                        .Height = 100
-                                                    }
-                                                }
+            For Each EmployeeID In employeeID_list
+                ' Create BarcodeWriter to create the barcode CODE_128
+                Dim writer As New BarcodeWriter With {
+                    .Format = BarcodeFormat.CODE_128,
+                    .Options = New EncodingOptions With {
+                        .Width = 400,
+                        .Height = 150,
+                        .PureBarcode = True ' Remove text below barcode
+                    }
+                }
+                ' Use BarcodeWriter to create the barcode from StaffID (code)
+                Dim img As Bitmap = writer.Write(EmployeeID)
 
-                                                ' Use BarcodeWriter to create the barcode from StaffID (code)
-                                                Dim img As Bitmap = writer.Write(code)
+                ' Add Tuple (code, img) to list barcodesList
+                barcodesList.Add(New Tuple(Of String, Bitmap)(EmployeeID, img))
+            Next
 
-                                                ' Thêm Tuple (code, img) vào ConcurrentBag barcodeImages
-                                                barcodeImages.Add(New Tuple(Of String, Bitmap)(code, img))
-                                            End Sub)
+            '------------------------------------------------------
 
             ' Customize margins and spacing
-            Dim leftMargin As Single = 1.0F
-            Dim rightMargin As Single = 50.0F
-            Dim topMargin As Single = 10.0F
-            Dim bottomMargin As Single = 0.1F
+            Dim leftMargin As Single = 0F
+            Dim rightMargin As Single = 30.0F
+            Dim topMargin As Single = 0.1F
+            Dim bottomMargin As Single = 0F
+            Dim cellPaddingLeft As Single = 2.0F
+            Dim cellPaddingRight As Single = 2.0F
             Dim cellPaddingTop As Single = 5.0F
             Dim cellPaddingBottom As Single = 5.0F
-            Dim cellPaddingLeft As Single = 10.0F
-            Dim cellPaddingRight As Single = 10.0F
             Dim barcodeWidth As Single = 150.0F
             Dim barcodeHeight As Single = 50.0F
-            Dim numOfCols As Integer = 4 'Quantity of colum in PDF file
-            '-----------------------------------
+            Dim numOfCols As Integer = 5 'Quantity of colum in PDF file
 
-            Using fs As New FileStream(pdfFilePath, FileMode.Create, FileAccess.Write, FileShare.None)
+            Using fs As New FileStream(outputFile, FileMode.Create, FileAccess.Write, FileShare.None)
+
                 Dim doc As New Document(PageSize.A4, leftMargin, rightMargin, topMargin, bottomMargin)
                 Dim writer As PdfWriter = PdfWriter.GetInstance(doc, fs)
                 doc.Open()
 
+                ' Using PdfPTable to arrange barcodes
                 Dim table As New PdfPTable(numOfCols)
-                table.WidthPercentage = 100 'table width is 100% of document width (after subtracting margins)
-                table.SpacingBefore = 10
-                table.SpacingAfter = 10
-                table.DefaultCell.Border = Rectangle.NO_BORDER ' Bỏ viền của các ô mặc định trong bảng.
+                table.WidthPercentage = 100 ' Set table width to 100% of the document width
+                table.SpacingBefore = 0
+                table.SpacingAfter = 0
 
                 ' Calculate the available width for each column
                 Dim totalWidth As Single = doc.PageSize.Width - leftMargin - rightMargin
                 Dim columnWidths(numOfCols - 1) As Single
+
                 For i As Integer = 0 To numOfCols - 1
                     columnWidths(i) = totalWidth / numOfCols
                 Next
+
                 table.SetWidths(columnWidths)
 
-                For Each item In barcodeImages
+                'CREATE THE BARCODES TABLE
+                '---------------------------------
+                For Each item In barcodesList
+
                     Dim imgStream As New MemoryStream() ' Create a memory stream to store the barcode image
                     item.Item2.Save(imgStream, ImageFormat.Png)
                     imgStream.Seek(0, SeekOrigin.Begin)
                     Dim pdfImage As iTextSharp.text.Image = iTextSharp.text.Image.GetInstance(imgStream)
-
-                    ' Scale image to fit within the cell while maintaining aspect ratio
                     pdfImage.ScaleToFit(barcodeWidth, barcodeHeight)
 
-                    Dim cell As New PdfPCell(pdfImage) With {
-                    .HorizontalAlignment = Element.ALIGN_CENTER,
-                    .VerticalAlignment = Element.ALIGN_MIDDLE,
-                    .Border = PdfPCell.NO_BORDER,
-                    .PaddingTop = cellPaddingTop,
-                    .PaddingBottom = cellPaddingBottom,
-                    .PaddingLeft = cellPaddingLeft,
-                    .PaddingRight = cellPaddingRight
-                }
+                    ' Create a cell for the barcode image
+                    Dim barcodeCell As New PdfPCell(pdfImage) With {
+                        .HorizontalAlignment = Element.ALIGN_CENTER,
+                        .VerticalAlignment = Element.ALIGN_MIDDLE,
+                        .Border = PdfPCell.NO_BORDER,
+                        .PaddingTop = cellPaddingTop,
+                        .PaddingBottom = 0, ' Set to 0 to reduce the gap between barcode and label
+                        .PaddingLeft = cellPaddingLeft,
+                        .PaddingRight = cellPaddingRight
+                    }
+
+                    ' Create a cell for the custom label
+                    Dim fontSize As Single = 8.0F ' Set your desired font size here
+                    Dim font As New Font(Font.FontFamily.HELVETICA, fontSize, Font.NORMAL)
+                    Dim labelCell As New PdfPCell(New Phrase(item.Item1, font)) With {
+                        .HorizontalAlignment = Element.ALIGN_CENTER,
+                        .VerticalAlignment = Element.ALIGN_TOP,
+                        .Border = PdfPCell.NO_BORDER,
+                        .PaddingTop = 0, ' Set to 0 to reduce the gap between barcode and label
+                        .PaddingBottom = cellPaddingBottom,
+                        .PaddingLeft = 25.0F,
+                        .PaddingRight = cellPaddingRight
+                    }
+
+                    ' Create a nested table to combine the barcode and label cells
+                    Dim nestedTable As New PdfPTable(1)
+                    nestedTable.WidthPercentage = 100
+                    nestedTable.AddCell(barcodeCell)
+                    nestedTable.AddCell(labelCell)
+
+                    ' Add the nested table to the main table
+                    Dim cell As New PdfPCell(nestedTable) With {
+                        .HorizontalAlignment = Element.ALIGN_CENTER,
+                        .VerticalAlignment = Element.ALIGN_MIDDLE,
+                        .Border = PdfPCell.NO_BORDER,
+                        .PaddingTop = cellPaddingTop,
+                        .PaddingBottom = cellPaddingBottom,
+                        .PaddingLeft = cellPaddingLeft,
+                        .PaddingRight = cellPaddingRight
+                    }
+
                     table.AddCell(cell)
                 Next
 
-                ' Add empty cells if needed to complete the last row
-                Dim emptyCells As Integer = numOfCols - (barcodeImages.Count Mod numOfCols)
+                'ADD EMPTY CELLS TO TABLE
+                'Add empty cells if needed to complete the last row of table
+                Dim emptyCells As Integer = numOfCols - (barcodesList.Count Mod numOfCols)
                 If emptyCells < numOfCols Then
                     For i As Integer = 1 To emptyCells
                         Dim emptyCell As New PdfPCell()
@@ -138,48 +166,19 @@ Class Form1
                     Next
                 End If
 
-                'Save table to PDF
+                '----------------------------------------------------------
+
+                'ADD TABLE TO DOCUMENT
                 doc.Add(table)
                 doc.Close()
+
             End Using
 
-            MessageBox.Show("Tạo tệp PDF thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Call btn_OpenOutput_Click(sender, e)
+            MessageBox.Show("Tạo File PDF thành công!")
+            Process.Start(outputFile)
         Catch ex As Exception
-            MessageBox.Show("Lỗi: " & ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("Error: " & ex.Message)
         End Try
-
-    End Sub
-
-    Private Sub btn_OpenInput_Click(sender As Object, e As EventArgs) Handles btn_OpenInput.Click
-
-        If File.Exists(filePath) Then
-            Try
-                Process.Start(filePath)
-            Catch ex As Exception
-                MessageBox.Show($"Không thể mở file data.xlsx:{Environment.NewLine}{ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            End Try
-        Else
-            Using package As New ExcelPackage()
-                Dim worksheet As ExcelWorksheet = package.Workbook.Worksheets.Add("Sheet1")
-                ' Add any default data or structure to the worksheet if needed
-                package.SaveAs(New FileInfo(filePath))
-            End Using
-        End If
-
-    End Sub
-
-    Private Sub btn_OpenOutput_Click(sender As Object, e As EventArgs) Handles btn_OpenOutput.Click
-
-        If File.Exists(pdfFilePath) Then
-            Try
-                Process.Start(pdfFilePath)
-            Catch ex As Exception
-                MessageBox.Show($"Không thể mở file PDF:{Environment.NewLine}{ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            End Try
-        Else
-            MessageBox.Show("File PDF không tồn tại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End If
 
     End Sub
 
