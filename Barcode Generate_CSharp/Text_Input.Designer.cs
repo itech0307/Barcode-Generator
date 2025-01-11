@@ -33,116 +33,122 @@
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties4 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            this.bunifuTextBox1 = new Bunifu.UI.WinForms.BunifuTextBox();
+            this.tbx_Input = new Bunifu.UI.WinForms.BunifuTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // bunifuTextBox1
+            // tbx_Input
             // 
-            this.bunifuTextBox1.AcceptsReturn = false;
-            this.bunifuTextBox1.AcceptsTab = false;
-            this.bunifuTextBox1.AnimationSpeed = 200;
-            this.bunifuTextBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
-            this.bunifuTextBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
-            this.bunifuTextBox1.AutoSizeHeight = true;
-            this.bunifuTextBox1.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuTextBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuTextBox1.BackgroundImage")));
-            this.bunifuTextBox1.BorderColorActive = System.Drawing.Color.DodgerBlue;
-            this.bunifuTextBox1.BorderColorDisabled = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.bunifuTextBox1.BorderColorHover = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
-            this.bunifuTextBox1.BorderColorIdle = System.Drawing.Color.Silver;
-            this.bunifuTextBox1.BorderRadius = 3;
-            this.bunifuTextBox1.BorderThickness = 1;
-            this.bunifuTextBox1.CharacterCase = Bunifu.UI.WinForms.BunifuTextBox.CharacterCases.Normal;
-            this.bunifuTextBox1.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.bunifuTextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.bunifuTextBox1.DefaultFont = new System.Drawing.Font("Segoe UI", 9.25F);
-            this.bunifuTextBox1.DefaultText = "";
-            this.bunifuTextBox1.FillColor = System.Drawing.Color.White;
-            this.bunifuTextBox1.HideSelection = true;
-            this.bunifuTextBox1.IconLeft = null;
-            this.bunifuTextBox1.IconLeftCursor = System.Windows.Forms.Cursors.IBeam;
-            this.bunifuTextBox1.IconPadding = 10;
-            this.bunifuTextBox1.IconRight = null;
-            this.bunifuTextBox1.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
-            this.bunifuTextBox1.Lines = new string[0];
-            this.bunifuTextBox1.Location = new System.Drawing.Point(73, 36);
-            this.bunifuTextBox1.MaxLength = 32767;
-            this.bunifuTextBox1.MinimumSize = new System.Drawing.Size(1, 1);
-            this.bunifuTextBox1.Modified = false;
-            this.bunifuTextBox1.Multiline = false;
-            this.bunifuTextBox1.Name = "bunifuTextBox1";
+            this.tbx_Input.AcceptsReturn = false;
+            this.tbx_Input.AcceptsTab = false;
+            this.tbx_Input.AnimationSpeed = 200;
+            this.tbx_Input.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
+            this.tbx_Input.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
+            this.tbx_Input.AutoSizeHeight = true;
+            this.tbx_Input.BackColor = System.Drawing.Color.Transparent;
+            this.tbx_Input.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tbx_Input.BackgroundImage")));
+            this.tbx_Input.BorderColorActive = System.Drawing.Color.DodgerBlue;
+            this.tbx_Input.BorderColorDisabled = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.tbx_Input.BorderColorHover = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            this.tbx_Input.BorderColorIdle = System.Drawing.Color.Silver;
+            this.tbx_Input.BorderRadius = 3;
+            this.tbx_Input.BorderThickness = 1;
+            this.tbx_Input.CharacterCase = Bunifu.UI.WinForms.BunifuTextBox.CharacterCases.Normal;
+            this.tbx_Input.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.tbx_Input.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tbx_Input.DefaultFont = new System.Drawing.Font("Segoe UI", 9.25F);
+            this.tbx_Input.DefaultText = "";
+            this.tbx_Input.FillColor = System.Drawing.Color.White;
+            this.tbx_Input.HideSelection = true;
+            this.tbx_Input.IconLeft = null;
+            this.tbx_Input.IconLeftCursor = System.Windows.Forms.Cursors.IBeam;
+            this.tbx_Input.IconPadding = 10;
+            this.tbx_Input.IconRight = null;
+            this.tbx_Input.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
+            this.tbx_Input.Lines = new string[0];
+            this.tbx_Input.Location = new System.Drawing.Point(97, 46);
+            this.tbx_Input.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbx_Input.MaxLength = 32767;
+            this.tbx_Input.MinimumSize = new System.Drawing.Size(1, 1);
+            this.tbx_Input.Modified = false;
+            this.tbx_Input.Multiline = false;
+            this.tbx_Input.Name = "tbx_Input";
             stateProperties1.BorderColor = System.Drawing.Color.DodgerBlue;
             stateProperties1.FillColor = System.Drawing.Color.Empty;
             stateProperties1.ForeColor = System.Drawing.Color.Empty;
             stateProperties1.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.bunifuTextBox1.OnActiveState = stateProperties1;
+            this.tbx_Input.OnActiveState = stateProperties1;
             stateProperties2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             stateProperties2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             stateProperties2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             stateProperties2.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-            this.bunifuTextBox1.OnDisabledState = stateProperties2;
+            this.tbx_Input.OnDisabledState = stateProperties2;
             stateProperties3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
             stateProperties3.FillColor = System.Drawing.Color.Empty;
             stateProperties3.ForeColor = System.Drawing.Color.Empty;
             stateProperties3.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.bunifuTextBox1.OnHoverState = stateProperties3;
+            this.tbx_Input.OnHoverState = stateProperties3;
             stateProperties4.BorderColor = System.Drawing.Color.Silver;
             stateProperties4.FillColor = System.Drawing.Color.White;
             stateProperties4.ForeColor = System.Drawing.Color.Empty;
             stateProperties4.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.bunifuTextBox1.OnIdleState = stateProperties4;
-            this.bunifuTextBox1.Padding = new System.Windows.Forms.Padding(3);
-            this.bunifuTextBox1.PasswordChar = '\0';
-            this.bunifuTextBox1.PlaceholderForeColor = System.Drawing.Color.Silver;
-            this.bunifuTextBox1.PlaceholderText = "Enter text";
-            this.bunifuTextBox1.ReadOnly = false;
-            this.bunifuTextBox1.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.bunifuTextBox1.SelectedText = "";
-            this.bunifuTextBox1.SelectionLength = 0;
-            this.bunifuTextBox1.SelectionStart = 0;
-            this.bunifuTextBox1.ShortcutsEnabled = true;
-            this.bunifuTextBox1.Size = new System.Drawing.Size(260, 39);
-            this.bunifuTextBox1.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            this.bunifuTextBox1.TabIndex = 3;
-            this.bunifuTextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.bunifuTextBox1.TextMarginBottom = 0;
-            this.bunifuTextBox1.TextMarginLeft = 3;
-            this.bunifuTextBox1.TextMarginTop = 1;
-            this.bunifuTextBox1.TextPlaceholder = "Enter text";
-            this.bunifuTextBox1.UseSystemPasswordChar = false;
-            this.bunifuTextBox1.WordWrap = true;
+            this.tbx_Input.OnIdleState = stateProperties4;
+            this.tbx_Input.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbx_Input.PasswordChar = '\0';
+            this.tbx_Input.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.tbx_Input.PlaceholderText = "Enter text";
+            this.tbx_Input.ReadOnly = false;
+            this.tbx_Input.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.tbx_Input.SelectedText = "";
+            this.tbx_Input.SelectionLength = 0;
+            this.tbx_Input.SelectionStart = 0;
+            this.tbx_Input.ShortcutsEnabled = true;
+            this.tbx_Input.Size = new System.Drawing.Size(338, 48);
+            this.tbx_Input.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
+            this.tbx_Input.TabIndex = 3;
+            this.tbx_Input.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.tbx_Input.TextMarginBottom = 0;
+            this.tbx_Input.TextMarginLeft = 3;
+            this.tbx_Input.TextMarginTop = 1;
+            this.tbx_Input.TextPlaceholder = "Enter text";
+            this.tbx_Input.UseSystemPasswordChar = false;
+            this.tbx_Input.WordWrap = true;
+            this.tbx_Input.Validating += new System.ComponentModel.CancelEventHandler(this.tbx_Input_Validating);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(25, 47);
+            this.label2.Location = new System.Drawing.Point(33, 59);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(42, 17);
+            this.label2.Size = new System.Drawing.Size(56, 23);
             this.label2.TabIndex = 2;
             this.label2.Text = "Value:";
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.bunifuTextBox1);
+            this.groupBox1.Controls.Add(this.tbx_Input);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(3, 3);
+            this.groupBox1.Location = new System.Drawing.Point(4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(360, 108);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Size = new System.Drawing.Size(480, 133);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Input Value";
             // 
             // Text_Input
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.groupBox1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Text_Input";
-            this.Size = new System.Drawing.Size(366, 114);
+            this.Size = new System.Drawing.Size(488, 140);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -151,7 +157,7 @@
 
         #endregion
 
-        private Bunifu.UI.WinForms.BunifuTextBox bunifuTextBox1;
+        private Bunifu.UI.WinForms.BunifuTextBox tbx_Input;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox1;
     }

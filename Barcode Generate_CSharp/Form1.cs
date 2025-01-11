@@ -18,13 +18,17 @@ namespace Barcode_Generate_CSharp
             pnlPrint.Controls.Add(printSetting);
             //---------------------------------------------------
 
+            // Show User Control BarcodeFormat in Panel pnlBarcodeFormat
+            pnlBarcodeFormat.Controls.Clear();
+            BarcodeFormat barcodeFormat = new BarcodeFormat();
+            pnlBarcodeFormat.Controls.Add(barcodeFormat);
 
         }
 
         private void drdlMode_SelectedIndexChanged(object sender, EventArgs e)
         {
-            panel1.Controls.Clear();
-            System.Windows.Forms.UserControl selectedControl = null;
+            pnl_Input.Controls.Clear();
+            UserControl selectedControl = null;
             if (drdlMode.SelectedIndex == 0)
             {
                 selectedControl = new Text_Input();
@@ -36,9 +40,9 @@ namespace Barcode_Generate_CSharp
 
             if (selectedControl != null)
             {
-                panel1.Controls.Add(selectedControl);
-                int xPos = (panel1.Width - selectedControl.Width) / 2;
-                int yPos = (panel1.Height - selectedControl.Height) / 2;
+                pnl_Input.Controls.Add(selectedControl);
+                int xPos = (pnl_Input.Width - selectedControl.Width) / 2;
+                int yPos = (pnl_Input.Height - selectedControl.Height) / 2;
 
                 // Set the UserControl's location to the calculated center position
                 selectedControl.Location = new Point(xPos, yPos);
@@ -46,5 +50,18 @@ namespace Barcode_Generate_CSharp
 
         }
 
+        private void btnGenerate_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Get value from UserControl Text_Input
+                    string text = ((Text_Input)pnl_Input.Controls[0]).GetInputText();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

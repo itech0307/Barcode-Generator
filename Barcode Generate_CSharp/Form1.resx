@@ -121,17 +121,17 @@
     <value>17, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="bunifuButton21.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnGenerate.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAh4AAAA7CAYAAAA0PYPmAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAF3SURBVHhe7daxTcNQGEZRl5QsEIfRGIKSHeJQpmEKZmAE
+        iVBORw0KGgoAAAANSUhEUgAAAh4AAAA9CAYAAADiZGD7AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAF/SURBVHhe7daxTcNQGEZRl5QsEIfRGIKSHeJQpmEKZmAE
         hqBCokERNgm1O8ytzpPOa/5vgDtc3+6w3O+m+X2clgUAYEu/jfE0P+6fl5thPM4P4/T9uTYEANjCJT6+
         Lk7D5ftYGwAAbOnSHOdh7QAA8B+EBwCQER4AQEZ4AAAZ4QEAZIQHAJARHgBARngAABnhAQBkhAcAkBEe
         AEBGeAAAGeEBAGSEBwCQER4AQEZ4AAAZ4QEAZIQHAJARHgBARngAABnhAQBkhAcAkBEeAEBGeAAAGeEB
         AGSEBwCQER4AQEZ4AAAZ4QEAZIQHAJARHgBARngAABnhAQBkhAcAkBEeAEBGeAAAGeEBAGSEBwCQER4A
         QEZ4AAAZ4QEAZIQHAJARHgBARngAABnhAQBkhAcAkBEeAEBGeAAAGeEBAGSEBwCQER4AQEZ4AAAZ4QEA
-        ZIbdNJ/XDgAAW7uGx0l8AAD/b34d9ofldjzOL+sDAIC/203z2/6w3P0ADwnLzydCXwcAAAAASUVORK5C
-        YII=
+        ZIQHAJARHgBAZthN83ntAACwtWt4nMQHAPD/5tdhf1hux+P8sj4AAPi73TS/7Q/L3Q+ufRzTFz4lvAAA
+        AABJRU5ErkJggg==
 </value>
   </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

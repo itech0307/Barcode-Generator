@@ -32,14 +32,15 @@
             Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.bunifuButton21 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pnlBarcodeFormat = new System.Windows.Forms.Panel();
+            this.btnGenerate = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
+            this.pnl_Input = new System.Windows.Forms.Panel();
             this.drdlMode = new Bunifu.UI.WinForms.BunifuDropdown();
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel5 = new System.Windows.Forms.Panel();
             this.pnlPrint = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -47,10 +48,13 @@
             // menuStrip1
             // 
             this.menuStrip1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.optionsToolStripMenuItem});
+            this.optionsToolStripMenuItem,
+            this.aboutToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
             this.menuStrip1.Size = new System.Drawing.Size(1124, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
@@ -61,118 +65,127 @@
             this.optionsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.optionsToolStripMenuItem.Text = "Options";
             // 
-            // panel3
+            // aboutToolStripMenuItem
             // 
-            this.panel3.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.tableLayoutPanel1.SetColumnSpan(this.panel3, 2);
-            this.panel3.Location = new System.Drawing.Point(3, 350);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(542, 192);
-            this.panel3.TabIndex = 10;
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.aboutToolStripMenuItem.Text = "About";
             // 
-            // bunifuButton21
+            // pnlBarcodeFormat
             // 
-            this.bunifuButton21.AllowAnimations = true;
-            this.bunifuButton21.AllowMouseEffects = true;
-            this.bunifuButton21.AllowToggling = false;
-            this.bunifuButton21.AnimationSpeed = 200;
-            this.bunifuButton21.AutoGenerateColors = false;
-            this.bunifuButton21.AutoRoundBorders = false;
-            this.bunifuButton21.AutoSizeLeftIcon = true;
-            this.bunifuButton21.AutoSizeRightIcon = true;
-            this.bunifuButton21.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuButton21.BackColor1 = System.Drawing.Color.DodgerBlue;
-            this.bunifuButton21.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuButton21.BackgroundImage")));
-            this.bunifuButton21.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            this.bunifuButton21.ButtonText = "GENERATE";
-            this.bunifuButton21.ButtonTextMarginLeft = 0;
-            this.bunifuButton21.ColorContrastOnClick = 45;
-            this.bunifuButton21.ColorContrastOnHover = 45;
-            this.tableLayoutPanel1.SetColumnSpan(this.bunifuButton21, 2);
-            this.bunifuButton21.Cursor = System.Windows.Forms.Cursors.Default;
+            this.pnlBarcodeFormat.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pnlBarcodeFormat.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.tableLayoutPanel1.SetColumnSpan(this.pnlBarcodeFormat, 2);
+            this.pnlBarcodeFormat.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pnlBarcodeFormat.Location = new System.Drawing.Point(3, 352);
+            this.pnlBarcodeFormat.Name = "pnlBarcodeFormat";
+            this.pnlBarcodeFormat.Size = new System.Drawing.Size(542, 190);
+            this.pnlBarcodeFormat.TabIndex = 10;
+            // 
+            // btnGenerate
+            // 
+            this.btnGenerate.AllowAnimations = true;
+            this.btnGenerate.AllowMouseEffects = true;
+            this.btnGenerate.AllowToggling = false;
+            this.btnGenerate.AnimationSpeed = 200;
+            this.btnGenerate.AutoGenerateColors = false;
+            this.btnGenerate.AutoRoundBorders = false;
+            this.btnGenerate.AutoSizeLeftIcon = true;
+            this.btnGenerate.AutoSizeRightIcon = true;
+            this.btnGenerate.BackColor = System.Drawing.Color.Transparent;
+            this.btnGenerate.BackColor1 = System.Drawing.Color.DodgerBlue;
+            this.btnGenerate.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnGenerate.BackgroundImage")));
+            this.btnGenerate.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnGenerate.ButtonText = "GENERATE";
+            this.btnGenerate.ButtonTextMarginLeft = 0;
+            this.btnGenerate.ColorContrastOnClick = 45;
+            this.btnGenerate.ColorContrastOnHover = 45;
+            this.tableLayoutPanel1.SetColumnSpan(this.btnGenerate, 2);
+            this.btnGenerate.Cursor = System.Windows.Forms.Cursors.Default;
             borderEdges1.BottomLeft = true;
             borderEdges1.BottomRight = true;
             borderEdges1.TopLeft = true;
             borderEdges1.TopRight = true;
-            this.bunifuButton21.CustomizableEdges = borderEdges1;
-            this.bunifuButton21.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.bunifuButton21.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.bunifuButton21.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.bunifuButton21.DisabledForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
-            this.bunifuButton21.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.bunifuButton21.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Pressed;
-            this.bunifuButton21.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuButton21.ForeColor = System.Drawing.Color.White;
-            this.bunifuButton21.IconLeftAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bunifuButton21.IconLeftCursor = System.Windows.Forms.Cursors.Default;
-            this.bunifuButton21.IconLeftPadding = new System.Windows.Forms.Padding(11, 3, 3, 3);
-            this.bunifuButton21.IconMarginLeft = 11;
-            this.bunifuButton21.IconPadding = 10;
-            this.bunifuButton21.IconRightAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bunifuButton21.IconRightCursor = System.Windows.Forms.Cursors.Default;
-            this.bunifuButton21.IconRightPadding = new System.Windows.Forms.Padding(3, 3, 7, 3);
-            this.bunifuButton21.IconSize = 25;
-            this.bunifuButton21.IdleBorderColor = System.Drawing.Color.DodgerBlue;
-            this.bunifuButton21.IdleBorderRadius = 4;
-            this.bunifuButton21.IdleBorderThickness = 1;
-            this.bunifuButton21.IdleFillColor = System.Drawing.Color.DodgerBlue;
-            this.bunifuButton21.IdleIconLeftImage = null;
-            this.bunifuButton21.IdleIconRightImage = null;
-            this.bunifuButton21.IndicateFocus = false;
-            this.bunifuButton21.Location = new System.Drawing.Point(3, 285);
-            this.bunifuButton21.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
-            this.bunifuButton21.Name = "bunifuButton21";
-            this.bunifuButton21.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.bunifuButton21.OnDisabledState.BorderRadius = 4;
-            this.bunifuButton21.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            this.bunifuButton21.OnDisabledState.BorderThickness = 1;
-            this.bunifuButton21.OnDisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.bunifuButton21.OnDisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
-            this.bunifuButton21.OnDisabledState.IconLeftImage = null;
-            this.bunifuButton21.OnDisabledState.IconRightImage = null;
-            this.bunifuButton21.onHoverState.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.bunifuButton21.onHoverState.BorderRadius = 4;
-            this.bunifuButton21.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            this.bunifuButton21.onHoverState.BorderThickness = 1;
-            this.bunifuButton21.onHoverState.FillColor = System.Drawing.Color.RoyalBlue;
-            this.bunifuButton21.onHoverState.ForeColor = System.Drawing.Color.White;
-            this.bunifuButton21.onHoverState.IconLeftImage = null;
-            this.bunifuButton21.onHoverState.IconRightImage = null;
-            this.bunifuButton21.OnIdleState.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.bunifuButton21.OnIdleState.BorderRadius = 4;
-            this.bunifuButton21.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            this.bunifuButton21.OnIdleState.BorderThickness = 1;
-            this.bunifuButton21.OnIdleState.FillColor = System.Drawing.Color.DodgerBlue;
-            this.bunifuButton21.OnIdleState.ForeColor = System.Drawing.Color.White;
-            this.bunifuButton21.OnIdleState.IconLeftImage = null;
-            this.bunifuButton21.OnIdleState.IconRightImage = null;
-            this.bunifuButton21.OnPressedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
-            this.bunifuButton21.OnPressedState.BorderRadius = 4;
-            this.bunifuButton21.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            this.bunifuButton21.OnPressedState.BorderThickness = 1;
-            this.bunifuButton21.OnPressedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
-            this.bunifuButton21.OnPressedState.ForeColor = System.Drawing.Color.White;
-            this.bunifuButton21.OnPressedState.IconLeftImage = null;
-            this.bunifuButton21.OnPressedState.IconRightImage = null;
-            this.bunifuButton21.Size = new System.Drawing.Size(542, 59);
-            this.bunifuButton21.TabIndex = 8;
-            this.bunifuButton21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.bunifuButton21.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
-            this.bunifuButton21.TextMarginLeft = 0;
-            this.bunifuButton21.TextPadding = new System.Windows.Forms.Padding(0);
-            this.bunifuButton21.UseDefaultRadiusAndThickness = true;
+            this.btnGenerate.CustomizableEdges = borderEdges1;
+            this.btnGenerate.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnGenerate.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btnGenerate.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.btnGenerate.DisabledForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
+            this.btnGenerate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnGenerate.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Pressed;
+            this.btnGenerate.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGenerate.ForeColor = System.Drawing.Color.White;
+            this.btnGenerate.IconLeftAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGenerate.IconLeftCursor = System.Windows.Forms.Cursors.Default;
+            this.btnGenerate.IconLeftPadding = new System.Windows.Forms.Padding(11, 3, 3, 3);
+            this.btnGenerate.IconMarginLeft = 11;
+            this.btnGenerate.IconPadding = 10;
+            this.btnGenerate.IconRightAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGenerate.IconRightCursor = System.Windows.Forms.Cursors.Default;
+            this.btnGenerate.IconRightPadding = new System.Windows.Forms.Padding(3, 3, 7, 3);
+            this.btnGenerate.IconSize = 25;
+            this.btnGenerate.IdleBorderColor = System.Drawing.Color.DodgerBlue;
+            this.btnGenerate.IdleBorderRadius = 4;
+            this.btnGenerate.IdleBorderThickness = 1;
+            this.btnGenerate.IdleFillColor = System.Drawing.Color.DodgerBlue;
+            this.btnGenerate.IdleIconLeftImage = null;
+            this.btnGenerate.IdleIconRightImage = null;
+            this.btnGenerate.IndicateFocus = false;
+            this.btnGenerate.Location = new System.Drawing.Point(3, 285);
+            this.btnGenerate.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
+            this.btnGenerate.Name = "btnGenerate";
+            this.btnGenerate.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btnGenerate.OnDisabledState.BorderRadius = 4;
+            this.btnGenerate.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnGenerate.OnDisabledState.BorderThickness = 1;
+            this.btnGenerate.OnDisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.btnGenerate.OnDisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
+            this.btnGenerate.OnDisabledState.IconLeftImage = null;
+            this.btnGenerate.OnDisabledState.IconRightImage = null;
+            this.btnGenerate.onHoverState.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnGenerate.onHoverState.BorderRadius = 4;
+            this.btnGenerate.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnGenerate.onHoverState.BorderThickness = 1;
+            this.btnGenerate.onHoverState.FillColor = System.Drawing.Color.RoyalBlue;
+            this.btnGenerate.onHoverState.ForeColor = System.Drawing.Color.White;
+            this.btnGenerate.onHoverState.IconLeftImage = null;
+            this.btnGenerate.onHoverState.IconRightImage = null;
+            this.btnGenerate.OnIdleState.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.btnGenerate.OnIdleState.BorderRadius = 4;
+            this.btnGenerate.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnGenerate.OnIdleState.BorderThickness = 1;
+            this.btnGenerate.OnIdleState.FillColor = System.Drawing.Color.DodgerBlue;
+            this.btnGenerate.OnIdleState.ForeColor = System.Drawing.Color.White;
+            this.btnGenerate.OnIdleState.IconLeftImage = null;
+            this.btnGenerate.OnIdleState.IconRightImage = null;
+            this.btnGenerate.OnPressedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
+            this.btnGenerate.OnPressedState.BorderRadius = 4;
+            this.btnGenerate.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnGenerate.OnPressedState.BorderThickness = 1;
+            this.btnGenerate.OnPressedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
+            this.btnGenerate.OnPressedState.ForeColor = System.Drawing.Color.White;
+            this.btnGenerate.OnPressedState.IconLeftImage = null;
+            this.btnGenerate.OnPressedState.IconRightImage = null;
+            this.btnGenerate.Size = new System.Drawing.Size(542, 61);
+            this.btnGenerate.TabIndex = 8;
+            this.btnGenerate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnGenerate.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnGenerate.TextMarginLeft = 0;
+            this.btnGenerate.TextPadding = new System.Windows.Forms.Padding(0);
+            this.btnGenerate.UseDefaultRadiusAndThickness = true;
+            this.btnGenerate.Click += new System.EventHandler(this.btnGenerate_Click);
             // 
-            // panel1
+            // pnl_Input
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.pnl_Input.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.tableLayoutPanel1.SetColumnSpan(this.panel1, 2);
-            this.panel1.Location = new System.Drawing.Point(3, 38);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(542, 239);
-            this.panel1.TabIndex = 9;
+            this.pnl_Input.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.tableLayoutPanel1.SetColumnSpan(this.pnl_Input, 2);
+            this.pnl_Input.Location = new System.Drawing.Point(3, 38);
+            this.pnl_Input.Name = "pnl_Input";
+            this.pnl_Input.Size = new System.Drawing.Size(542, 239);
+            this.pnl_Input.TabIndex = 9;
             // 
             // drdlMode
             // 
@@ -244,29 +257,21 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.drdlMode, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.panel3, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.pnl_Input, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.pnlBarcodeFormat, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.pnlPrint, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.bunifuButton21, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.btnGenerate, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.panel5, 0, 4);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(10, 27);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 5;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 245F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 67F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 198F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 69F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 196F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1104, 637);
             this.tableLayoutPanel1.TabIndex = 1;
-            // 
-            // panel5
-            // 
-            this.tableLayoutPanel1.SetColumnSpan(this.panel5, 3);
-            this.panel5.Location = new System.Drawing.Point(3, 548);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1101, 86);
-            this.panel5.TabIndex = 10;
             // 
             // pnlPrint
             // 
@@ -276,6 +281,14 @@
             this.tableLayoutPanel1.SetRowSpan(this.pnlPrint, 4);
             this.pnlPrint.Size = new System.Drawing.Size(553, 539);
             this.pnlPrint.TabIndex = 12;
+            // 
+            // panel5
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.panel5, 3);
+            this.panel5.Location = new System.Drawing.Point(3, 548);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(1101, 85);
+            this.panel5.TabIndex = 10;
             // 
             // Form1
             // 
@@ -305,14 +318,15 @@
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel pnlBarcodeFormat;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label label1;
         private Bunifu.UI.WinForms.BunifuDropdown drdlMode;
-        private System.Windows.Forms.Panel panel1;
-        private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 bunifuButton21;
+        private System.Windows.Forms.Panel pnl_Input;
+        private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 btnGenerate;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel pnlPrint;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
     }
 }
 
